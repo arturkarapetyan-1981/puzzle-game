@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Puzzle Game — Home & Play</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- === Home Page === -->
+  <div id="homePage" class="page active">
+    <h1>🧩 Puzzle Game</h1>
+    <button id="startBtn">▶ Start Game</button>
+    <button id="rulesBtn">📜 Game Rules</button>
+  </div>
+
+  <!-- === Game Page === -->
+  <div id="gamePage" class="page">
+    <h1>🧩 Puzzle Game</h1>
+
+    <div id="controls">
+      <label>
+        Grid:
+        <select id="gridSize">
+          <option value="2">2 × 2</option>
+          <option value="3" selected>3 × 3</option>
+          <option value="4">4 × 4</option>
+          <option value="5">5 × 5</option>
+        </select>
+      </label>
+      <button id="randomBtn">🎲 Random Image</button>
+      <label>
+        Or upload:
+        <input type="file" id="upload" accept="image/*">
+      </label>
+    </div>
+
+    <div id="puzzle"></div>
+    <div id="status">Moves: 0</div>
+
+    <button id="backHome">⬅ Back to Home</button>
+  </div>
+
+  <!-- === Rules Modal === -->
+  <div id="rulesModal" class="modal">
+    <div class="modal-content">
+      <h2>📜 Game Rules</h2>
+      <p>
+        1. Choose a grid size (2×2, 3×3, 4×4, or 5×5).<br>
+        2. Pick a random image or upload your own.<br>
+        3. Drag and drop the pieces to swap them.<br>
+        4. Keep swapping until all pieces are in the correct order.<br>
+        5. The game will notify you once the puzzle is solved.
+      </p>
+      <button id="closeRules">OK</button>
+    </div>
+  </div>
+
+  <!-- === Win Modal === -->
+  <div id="winModal" class="modal">
+    <div class="modal-content">
+      <h2>🎉 Puzzle Solved!</h2>
+      <p id="modalText"></p>
+      <button id="closeModal">OK</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+

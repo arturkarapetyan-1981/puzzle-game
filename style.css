@@ -1,0 +1,184 @@
+:root {
+    --board-size: min(600px, 90vmin);
+    --primary: #6366f1;
+    --primary-dark: #4338ca;
+    --accent: #f43f5e;
+    --bg: background: #2A7B9B; background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    --text: #1f2937;
+    --card-bg: #ffffffcc;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+    font-weight: 700;
+    color: var(--primary);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: background 0.25s ease, transform 0.1s ease;
+    padding: 12px 22px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* === Layout sections === */
+.page {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+}
+.page.active { display: flex; }
+
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 14px 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    backdrop-filter: blur(6px);
+}
+
+label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+input, select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+select:focus, input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.25);
+}
+
+#puzzle {
+    display: grid;
+    width: var(--board-size);
+    height: var(--board-size);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f1f5f9;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+}
+
+.piece {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: grab;
+    border: 1px solid rgba(255,255,255,0.8);
+    user-select: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.piece:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.piece.dragging { opacity: 0.65; }
+.piece.over { outline: 3px dashed var(--accent); }
+
+#status {
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* === Modal Styles === */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: white;
+    padding: 26px 34px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 90%;
+    width: 360px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: pop 0.35s ease;
+}
+
+.modal-content h2 {
+    margin: 0 0 12px;
+    font-size: 1.4rem;
+    color: var(--accent);
+}
+
+.modal-content p {
+    font-size: 0.95rem;
+    margin: 6px 0 12px;
+    color: #374151;
+    line-height: 1.5;
+}
+
+.modal-content button {
+    margin-top: 12px;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
