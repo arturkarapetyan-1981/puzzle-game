@@ -161,3 +161,36 @@ select:focus, input:focus {
   #controls { flex-direction: column; gap: 6px; padding: 10px; }
 }
 
+/* Fullscreen button */
+.fullscreen-parent {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1200;
+}
+.fullscreen-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.fullscreen-btn svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+.fullscreen-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+.fullscreen-btn:active {
+  transform: scale(0.95);
+}
+
+
+

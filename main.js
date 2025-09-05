@@ -189,6 +189,18 @@ function checkWin() {
   }
 }
 
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error(`Error attempting fullscreen: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  document.getElementById("fullscreen-btn").addEventListener("click", toggleFullscreen);
+
 
 
 
